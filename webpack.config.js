@@ -4,7 +4,7 @@ module.exports = {
     entry: glob.sync("./src/components/**/*.js"),
     output: {
         path: __dirname,
-        filename: "bundle.js"
+        filename: "lib/bundle.js"
     },
     module: {
         loaders: [

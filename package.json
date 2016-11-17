@@ -4,7 +4,9 @@
   "description": "a collection of useful components",
   "main": "src/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --progress --colors",
+    "clean": "./node_modules/.bin/rimraf lib",
+    "bundle": "./node_modules/.bin/webpack --progress --colors",
+    "build": "npm run clean && npm run bundle",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +36,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "glob": "^7.1.1",
+    "rimraf": "^2.5.4",
     "webpack": "^1.13.3"
   }
 }
