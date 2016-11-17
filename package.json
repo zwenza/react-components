@@ -2,7 +2,7 @@
   "name": "react-redux-components",
   "version": "0.0.1",
   "description": "a collection of useful components",
-  "main": "src/index.js",
+  "main": "lib/bundle.js",
   "scripts": {
     "clean": "./node_modules/.bin/rimraf lib",
     "bundle": "./node_modules/.bin/webpack --progress --colors",
