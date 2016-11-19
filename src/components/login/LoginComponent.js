@@ -5,7 +5,8 @@ import { InputGroup, Button } from '@blueprintjs/core';
  * LoginComponent
  * @description: handles username and password
  * @props:
- *  {function} handleLogin: get's called when the user clicks the login-button
+ *  {value}     buttonText: text of the register button
+ *  {function}  handleLogin: get's called when the user clicks the login-button
  */
 export default class LoginComponent extends React.Component {
     constructor() {
@@ -16,11 +17,13 @@ export default class LoginComponent extends React.Component {
         }
     }
 
-    handleUsernameChange = (username) => { this.setState({username: username}) };
-    handlePasswordChange = (password) => { this.setState({password: password}) };
+    handleUsernameChange = (event) => { this.setState({username: event.target.value}) };
+    handlePasswordChange = (event) => { this.setState({password: event.target.value}) };
+    handleSubmit = () => { this.props.handleLogin(this.state.username, this.state.password) };
 
     render() {
         const { username, password } = this.state;
+        const { buttonText } = this.props;
 
         return (
             /* TODO add more styling */
@@ -38,12 +41,10 @@ export default class LoginComponent extends React.Component {
                     type="password"
                     onChange={this.handlePasswordChange}
                     value={password.value} />
-
-                /*TODO handleLogin function call here*/
-
                 <Button
                     className="pt-small pt-intent-primary"
-                    text="register" />
+                    text={buttonText ? buttonText : "login"}
+                    onClick={this.handleSubmit}/>
             </div>
         );
     }
