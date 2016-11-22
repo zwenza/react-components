@@ -1,4 +1,4 @@
-# react-components
+# react-components [![Build Status](https://travis-ci.org/zwenza/react-components.svg?branch=master)](https://travis-ci.org/zwenza/react-components)
 a collection of easy to use components. 
 The framework builds on top of blueprintjs and simplifies many things 
 in blueprintjs to getting started faster and build great application.
