@@ -1,7 +1,7 @@
 import TestComponent from './components/TestComponent';
-import LoginComponent from './components/login/LoginComponent';
+import Login from './components/login/Login';
 
 export {
     TestComponent,
-    LoginComponent
+    Login
 }

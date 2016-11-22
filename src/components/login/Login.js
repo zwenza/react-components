@@ -12,7 +12,7 @@ import { InputGroup, Button } from '@blueprintjs/core';
  *  {value:string}  (optional)  firstPlaceholder:   placeholder of the first input-field
  *  {value:string}  (optional)  secondPlaceholder:  placeholder of the second input-field
  */
-export default class LoginComponent extends React.Component {
+export default class Login extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -21,9 +21,9 @@ export default class LoginComponent extends React.Component {
         }
     }
 
-    handleUsernameChange = (event) => { this.setState({username: event.target.value}) };
-    handlePasswordChange = (event) => { this.setState({password: event.target.value}) };
-    handleSubmit = () => { this.props.handleLogin(this.state.username, this.state.password) };
+    handleUsernameChange = (event) => this.setState({username: event.target.value});
+    handlePasswordChange = (event) => this.setState({password: event.target.value});
+    handleSubmit = () => this.props.handleLogin(this.state.username, this.state.password);
 
     render() {
         const { username, password } = this.state;
@@ -35,13 +35,13 @@ export default class LoginComponent extends React.Component {
                 <h3>sign in</h3>
                 <InputGroup
                     className={textFieldClass ? textFieldClass : ".pt-large"}
-                    placeholder="email"
+                    placeholder={firstPlaceholder ? firstPlaceholder : "email"}
                     type="email"
                     onChange={this.handleUsernameChange}
                     value={username.value} />
                 <InputGroup
                     className={textFieldClass ? textFieldClass : ".pt-large"}
-                    placeholder="password"
+                    placeholder={secondPlaceholder ? secondPlaceholder : "password"}
                     type="password"
                     onChange={this.handlePasswordChange}
                     value={password.value} />
