@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow, mount} from 'enzyme';
 import Login from './Login';
-import { InputGroup, Button } from '@blueprintjs/core';
+import {Button, FormControl} from "react-bootstrap";
 
 describe('<Login />', () => {
     it('renders without crashing', () => {
@@ -25,14 +25,14 @@ describe('<Login />', () => {
     it('calls the handleLogin function with correct values', () => {
         var handleSubmit = jest.fn();
 
-        const login = mount(
+        const login = shallow(
             <Login handleLogin={handleSubmit}/>
         );
 
         // mock user-input data
         login.setState({
-            username: "test@test.at",
-            password: "testtesttest"
+            username: {value: 'test@test.at'},
+            password: {value: 'testtesttest'}
         });
 
         expect(handleSubmit).not.toBeCalled();
@@ -45,7 +45,7 @@ describe('<Login />', () => {
             <Login firstPlaceholder="test"/>
         );
 
-        expect(login.find(InputGroup).get(0).props.placeholder).toEqual("test");
+        expect(login.find(FormControl).get(0).props.placeholder).toEqual("test");
     });
 
     it('changes second placeholder text', () => {
@@ -53,6 +53,6 @@ describe('<Login />', () => {
             <Login secondPlaceholder="test"/>
         );
 
-        expect(login.find(InputGroup).get(1).props.placeholder).toEqual("test");
+        expect(login.find(FormControl).get(1).props.placeholder).toEqual("test");
     });
 });
