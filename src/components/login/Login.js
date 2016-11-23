@@ -7,8 +7,8 @@ import {Button, FormControl, FormGroup, ControlLabel} from "react-bootstrap";
  * @props:
  *  {function}      (mandatory) handleLogin:        get's called when the user clicks the login-button
  *  {value:string}  (optional)  buttonText:         text of the register button
- *  {value:string}  (optional)  firstPlaceholder:   placeholder of the first input-field
- *  {value:string}  (optional)  secondPlaceholder:  placeholder of the second input-field
+ *  {value:string}  (optional)  firstLabel:         text of the label of the first input-field
+ *  {value:string}  (optional)  secondLabel:        text of the label of the second input-field
  *  {value:string}  (optional)  firstPlaceholder:   placeholder of the first input-field
  *  {value:string}  (optional)  secondPlaceholder:  placeholder of the second input-field
  */
