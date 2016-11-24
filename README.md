@@ -4,16 +4,20 @@ a collection of easy to use components.
 The framework builds on top of react-bootstrap and provides many components you then won't
 need to implement on your own to getting started faster and build great applications.
 
+## build-set
+To build this project you need yarn installed globally.
+`npm install -g yarn`
+
 ## usage
 see the wiki on which components are available and how to use them!
 
 ## development
 `react-components` isn't available on npm because it's still in a very early development phase.
 if you still want to test the framework or contribute to it you can checkout the project and run
-`npm install` first. 
+`yarn install` first.
 
-To publish your changes local run `npm run dev`. 
-Now you can link the libary into your sample with `npm link react-components`.
+To publish your changes local run `yarn run dev`.
+Now you can link the libary into your sample with `yarn link react-components`.
 
 ### styling 
 react-components uses bootstrap for styling to make it easy to create your own styles.

@@ -1,8 +1,11 @@
 # Project
-/lib
+lib/
 
 # Node
-/node_modules
+node_modules/
 
 # Idea-Stuff
-/.idea
+.idea/
+
+# Mac stuff
+.DS_Store
