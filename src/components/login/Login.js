@@ -27,26 +27,42 @@ export default class Login extends React.Component {
         const {buttonText, firstLabel, secondLabel, firstPlaceholder, secondPlaceholder} = this.props;
 
         return (
-            /* TODO add more styling */
             <div className=".login-form">
                 <h3>sign in</h3>
                 <FormGroup>
-                    <ControlLabel>{ firstLabel ? firstLabel : 'E-Mail' }</ControlLabel>
+                    <ControlLabel>{firstLabel}</ControlLabel>
                     <FormControl
-                        placeholder={firstPlaceholder ? firstPlaceholder : "E-Mail"}
+                        placeholder={firstPlaceholder}
                         inputRef={ref => { this.setState({username: ref}) } }
                     />
-                    <ControlLabel>{ secondLabel ? secondLabel : 'Password' }</ControlLabel>
+                    <ControlLabel>{secondLabel}</ControlLabel>
                     <FormControl
-                        placeholder={secondPlaceholder ? secondPlaceholder : "Password"}
+                        placeholder={secondPlaceholder}
                         inputRef={ref => { this.setState({password: ref}) } }
                     />
                     <Button bsStyle="primary"
                             onClick={this.handleSubmit}>
-                        { buttonText ? buttonText : "login" }
+                        { buttonText  }
                     </Button>
                 </FormGroup>
             </div>
         );
     }
 }
+
+Login.propTypes = {
+    handleLogin: React.PropTypes.func.isRequired,
+    buttonText: React.PropTypes.string,
+    firstLabel: React.PropTypes.string,
+    secondLabel: React.PropTypes.string,
+    firstPlaceholder: React.PropTypes.string,
+    secondPlaceholder: React.PropTypes.string
+};
+
+Login.defaultProps = {
+    buttonText: 'Login',
+    firstLabel: 'E-Mail',
+    secondLabel: 'Password',
+    firstPlaceholder: 'E-Mail',
+    secondPlaceholder: 'Password'
+};
