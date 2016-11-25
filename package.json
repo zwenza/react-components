@@ -4,10 +4,10 @@
   "description": "a collection of useful components",
   "main": "lib/index.js",
   "scripts": {
-    "clear": "./node_modules/.bin/rimraf lib",
-    "babel": "./node_modules/.bin/babel --out-dir lib src",
-    "dev": "npm run babel",
-    "test": "./node_modules/.bin/jest"
+    "clear": "rimraf lib",
+    "babel": "babel --out-dir lib src",
+    "dev": "yarn run babel",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
