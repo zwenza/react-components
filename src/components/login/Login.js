@@ -3,14 +3,12 @@ import {Button, FormControl, FormGroup, ControlLabel} from "react-bootstrap";
 
 /**
  * LoginComponent
- * @description: handles username and password
- * @props:
- *  {function}      (mandatory) handleLogin:        get's called when the user clicks the login-button
- *  {value:string}  (optional)  buttonText:         text of the register button
- *  {value:string}  (optional)  firstLabel:         text of the label of the first input-field
- *  {value:string}  (optional)  secondLabel:        text of the label of the second input-field
- *  {value:string}  (optional)  firstPlaceholder:   placeholder of the first input-field
- *  {value:string}  (optional)  secondPlaceholder:  placeholder of the second input-field
+ *
+ * @description:
+ * the login component is a component to provide a
+ * simple ui to input username and password and call
+ * a given handleSubmit prop function with the input
+ * of the user.
  */
 export default class Login extends React.Component {
     constructor() {
@@ -51,11 +49,17 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
+    // get's called when the user clicks the login-button
     handleLogin: React.PropTypes.func.isRequired,
+    // text of the register button
     buttonText: React.PropTypes.string,
+    // text of the label of the first input-field
     firstLabel: React.PropTypes.string,
+    // text of the label of the second input-field
     secondLabel: React.PropTypes.string,
+    // placeholder of the first input-field
     firstPlaceholder: React.PropTypes.string,
+    // placeholder of the second input-field
     secondPlaceholder: React.PropTypes.string
 };
 

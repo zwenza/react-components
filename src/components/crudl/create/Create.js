@@ -3,7 +3,10 @@ import {Button, FormControl, FormGroup, ControlLabel, Checkbox} from "react-boot
 import _ from 'lodash';
 
 /**
- * the Create-Component is a component to create a new
+ * CreateComponent
+ *
+ * @description:
+ * the create component is a component to create a new
  * object of the given model prop.
  *
  * the component will automatically analyse the model object
