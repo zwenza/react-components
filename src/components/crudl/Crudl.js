@@ -13,9 +13,10 @@ export default class Crudl extends React.Component {
 }
 
 Crudl.propTypes = {
-    children: React.PropTypes.arrayOf(
-        React.PropTypes.oneOfType([
-            React.PropTypes.instanceOf(Create)
-        ])
-    )
+    //FIXME: not quite correct if we pass only one children!
+    // children: React.PropTypes.arrayOf(
+    //     React.PropTypes.oneOfType([
+    //         React.PropTypes.instanceOf(Create)
+    //     ])
+    // )
 };
