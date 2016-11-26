@@ -1,39 +1,67 @@
 import React, {Component} from 'react';
-import {Button, FormControl, FormGroup, ControlLabel} from "react-bootstrap";
+import {Button, FormControl, FormGroup, ControlLabel, Checkbox} from "react-bootstrap";
 import _ from 'lodash';
 
+/**
+ * the Create-Component is a component to create a new
+ * object of the given model prop.
+ *
+ * the component will automatically analyse the model object
+ * and create user-inputs for it's properties.
+ *
+ * After the user clicked the create-button the handleCreate
+ * method will get called with the new model-object.
+ */
 export default class Create extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            model: this.props.model
+            model: Object.assign({},this.props.model)
         };
     }
 
-    handleSubmit = () => { this.props.handleCreate(_.mapValues(this.state.model, (input) => { return input.value; })) };
+    handleSubmit = () => {
+        this.props.handleCreate(_.mapValues(this.state.model, (value, key) => {
+            //TODO clear this boolean workaround
+            return typeof this.props.model[key] === 'boolean' ? value.checked : value.value
+        }))
+    };
 
-    modelValues = () => {
-        const modelLines = [];
+    getModelInput = (property) => {
+        if(typeof this.state.model[property] === 'number'){
+            //TODO add special number validation here
+            return <FormControl inputRef={ref => { this.state.model[property] = ref }}/>
+        } else if(typeof this.state.model[property] === 'boolean'){
+            return <Checkbox inputRef={ref => { this.state.model[property] = ref }}/>
+        } else {
+            return <FormControl inputRef={ref => { this.state.model[property] = ref }}/>
+        }
+    };
+
+    modelInputs = () => {
+        const modelInputForms = [];
         for(const property in this.props.model){
-            modelLines.push(
-                <div>
+            modelInputForms.push(
+                <div key={property}>
                     <ControlLabel>{property}</ControlLabel>
-                    <FormControl inputRef={ref => { this.state.model[property] = ref;}}/>
+                    { this.getModelInput(property) }
                 </div>
             );
         }
-        return modelLines;
+        return modelInputForms;
     };
 
     render() {
+        const { createButtonText } = this.props;
+
         return(
             <div>
                 <h2>Create</h2>
                 <FormGroup>
-                    { this.modelValues() }
+                    { this.modelInputs() }
                     <Button bsStyle="primary"
                             onClick={this.handleSubmit}>
-                        Create
+                        { createButtonText }
                     </Button>
                 </FormGroup>
             </div>
@@ -42,6 +70,14 @@ export default class Create extends React.Component {
 }
 
 Create.propTypes = {
+    // gets called when the user wants to create the object
     handleCreate: React.PropTypes.func.isRequired,
-    model: React.PropTypes.object.isRequired
+    // model object which should be created
+    model: React.PropTypes.object.isRequired,
+    // text of the button to create the object
+    createButtonText: React.PropTypes.string
+};
+
+Create.defaultProps = {
+    createButtonText: 'Create'
 };
