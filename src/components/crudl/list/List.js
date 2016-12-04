@@ -1,38 +1,67 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 
+/**
+ * ListComponent
+ *
+ * @description:
+ * the list component is a component to list
+ * various data in a table.
+ *
+ * it's possible to define filter and headings
+ * to control which data should be displayed
+ * int the list component.
+ */
 export default class List extends React.Component {
     constructor() {
         super();
     }
 
+    /**
+     * generates the headings of the table
+     * @returns {XML} header-element
+     */
     generateHeadings = () => {
-        if (!!this.props.headings) {
+        if (this.props.headings) {
             const headings = [];
-            for (let i = 0; i < this.props.headings.length; i++) {
-                headings.push(<th key={i}>{this.props.headings[i]}</th>);
-            }
+            this.props.headings.forEach((heading, id) => {
+                headings.push(<th key={id}>{heading}</th>);
+            });
             return <tr>{headings}</tr>;
         }
     };
 
+    /**
+     * generates a list of data-entries.
+     * for each element in the data-array a line will be generated
+     * @returns {Array} list of data-entries
+     */
     generateDataLines = () => {
-        if (!!this.props.filter) {
-            const dataLines = [];
-            for (let i = 0; i < this.props.data.length; i++) {
-                const data = [];
-                for (let j = 0; j < this.props.filter.length; j++) {
-                    for (const property in this.props.data[i]) {
-                        if (this.props.data[i].hasOwnProperty(property)) {
-                            if (property == this.props.filter[j]) {
-                                data.push(<td key={j}>{this.props.data[i][property]}</td>);
+        const {data, filter} = this.props;
+
+        const dataLines = [];
+        data.forEach((dataEntry, dataId) => {
+            let dataLine = [], propId = 0;
+
+            for (const property in dataEntry) {
+                // check if property is a inherited or own property
+                if (dataEntry.hasOwnProperty(property)) {
+                    // check if a filter was set
+                    if (filter) {
+                        filter.forEach((filterEntry) => {
+                            if (property == filterEntry) {
+                                dataLine.push(<td key={propId}>{dataEntry[property]}</td>);
                             }
-                        }
+                        });
+                    } else {
+                        dataLine.push(<td key={propId}>{dataEntry[property]}</td>);
                     }
                 }
-                dataLines.push(<tr key={i}>{data}</tr>);
+                propId++;
             }
-            return dataLines;
-        }
+
+            dataLines.push(<tr key={dataId}>{dataLine}</tr>);
+        });
+        return dataLines;
     };
 
     render() {
