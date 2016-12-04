@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Login from "../../lib/components/login/Login";
 import Create from "../../lib/components/crudl/create/Create";
+import List from "../../lib/components/crudl/list/List";
 import { Grid, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
@@ -31,6 +32,11 @@ class App extends Component {
                     </Col>
                     <Col md={5}>
                         <Create handleCreate={this.handleCreate} model={{username: '', password: '', checkedAGBs: false}} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col mdOffset={2} md={5}>
+                        <List data={[{test: 'testvalue', blub: 'blubvalue'}, {test: 'testvalue', blub: 'blubvalue'}]} filter={['test']} headings={['Test']}/>
                     </Col>
                 </Row>
             </Grid>
